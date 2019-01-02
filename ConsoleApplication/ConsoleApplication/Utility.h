@@ -71,7 +71,7 @@ public:
 		}
 	}
 
-	void Push(T InValue)
+	void Push(const T& InValue)
 	{
 		if (TopNode == nullptr)
 		{
