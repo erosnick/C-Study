@@ -1,346 +1,12 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
 
-template <typename T>
-T BinarySearch(const std::vector<T>& Array, T Find)
-{
-	auto Size = Array.size();
-
-	auto Index = Size / 2;
-
-	auto Counter = 0;
-
-	while (Index != -1)
-	{
-		Counter++;
-
-		auto Value = Array[Index];
-
-		if (Value == Find)
-		{
-			std::cout << "Search Times: " << Counter << std::endl;
-
-			return Index;
-		}
-		else
-		{
-			if (Value > Find)
-			{
-				Index = Index / 2;
-			}
-			else
-			{
-				Index = (Index + Size) / 2;
-			}
-		}
-	}
-
-	return -1;
-}
-
-const int INVAILD = -100000000;
+#include "LinkedList.h"
 
 template <typename T>
-struct Node
-{
-	Node()
-	{
-		Value = INVAILD;
-		NextNode = nullptr;
-	}
-
-	T Value;
-	Node* NextNode;
-};
-
-template <typename T>
-class Stack
-{
-public:
-
-	Stack()
-	{
-		TopNode = nullptr;
-		StackSize = 0;
-	}
-	
-	~Stack()
-	{
-		while (!Empty())
-		{
-			Pop();
-		}
-	}
-
-	void Push(const T& InValue)
-	{
-		if (TopNode == nullptr)
-		{
-			TopNode = new Node<T>();
-
-			TopNode->Value = InValue;
-		}
-		else
-		{
-			auto NewNode = new Node<T>();
-
-			NewNode->NextNode = TopNode;
-
-			TopNode = NewNode;
-
-			TopNode->Value = InValue;
-		}
-
-		StackSize++;
-	}
-
-	T Pop()
-	{
-		if (TopNode != nullptr)
-		{
-			auto PopValue = TopNode->Value;
-
-			auto TempNode = TopNode;
-
-			TopNode = TopNode->NextNode;
-
-			delete TempNode;
-
-			StackSize--;
-
-			return PopValue;
-		}
-
-		return -1;
-	}
-
-	T Top() const
-	{
-		if (Empty())
-		{
-			throw std::runtime_error("Stack is empty.");
-		}
-		
-		return TopNode->Value;
-	}
-
-	int Size()
-	{
-		return StackSize;
-	}
-
-	bool Empty() const
-	{
-		return StackSize > 0;
-	}
-
-private:
-
-	Node<T>* TopNode;
-
-	int StackSize;
-};
-
-template <typename T>
-class LinkList
-{
-public:
-
-	LinkList()
-	{
-		Head = new Node<T>();
-		Tail = Head->NextNode;
-		Cursor = Head;
-
-		NodeCount = 0;
-	}
-
-	~LinkList()
-	{
-		Node<T>* CurrentNode = Head;
-
-		while (CurrentNode != nullptr)
-		{
-			Head = CurrentNode->NextNode;
-
-			delete CurrentNode;
-
-			CurrentNode = Head;
-		}
-	}
-
-	void Insert(int Position, T Value)
-	{
-		if (Position >= 0 && Position <= (NodeCount - 1))
-		{
-			Node<T>* Temp = Head;
-
-			for (int i = 1; i <= Position; i++)
-			{
-				Temp = Temp->NextNode;
-			}
-
-			Node<T>* NewNode = new Node<T>();
-			NewNode->Value = Value;
-			NewNode->NextNode = Temp->NextNode;
-			Temp->NextNode = NewNode;
-		}
-	}
-
-	void Delete(T Value)
-	{
-		Node<T>* PreNode = Head;
-		Node<T>* Temp = Head->NextNode;
-
-		while (Temp != nullptr)
-		{
-			if (Temp->Value == Value)
-			{
-				PreNode->NextNode = Temp->NextNode;
-
-				delete Temp;
-
-				break;
-			}
-
-			Temp = Temp->NextNode;
-			PreNode = PreNode->NextNode;
-		}
-
-		NodeCount--;
-	}
-
-	void DeleteAt(int Position)
-	{
-		int Index = 0;
-
-		Node<T>* PreNode = Head;
-		Node<T>* Temp = Head->NextNode;
-
-		while (Temp != nullptr)
-		{
-			if (Index == Position)
-			{
-				PreNode->NextNode = Temp->NextNode;
-
-				delete Temp;
-
-				break;
-			}
-
-			PreNode = PreNode->NextNode;
-			Temp = Temp->NextNode;
-			Index++;
-		}
-
-		NodeCount--;
-	}
-
-	void Append(T Value)
-	{
-		if (Head->NextNode == nullptr)
-		{
-			Node<T>* NewNode = new Node<T>();
-
-			NewNode->Value = Value;
-
-			Head->NextNode = NewNode;
-
-			NewNode->NextNode = Tail;
-
-			Last = NewNode;
-
-			NodeCount++;
-
-			return;
-		}
-
-		Last->NextNode = new Node<T>();
-		Last->NextNode->Value = Value;
-		Last = Last->NextNode;
-		Tail = Last->NextNode;
-
-		NodeCount++;
-	}
-
-	T Next()
-	{
-		T Value = 0;
-
-		if (Cursor->NextNode != nullptr)
-		{
-			Value = Cursor->NextNode->Value;
-
-			Cursor = Cursor->NextNode;
-		}
-
-		return Value;
-	}
-
-	T operator[](int Index)
-	{
-		int Counter = 0;
-
-		while (Cursor->NextNode != nullptr)
-		{
-			if (Counter == Index)
-			{
-				T Value = Cursor->NextNode->Value;
-				Reset();
-				return Value;
-			}
-
-			Cursor = Cursor->NextNode;
-			Counter++;
-		}
-
-		Reset();
-
-		return T();
-	}
-
-	void Reset()
-	{
-		Cursor = Head;
-	}
-
-	int Length() const
-	{
-		return NodeCount;
-	}
-
-	bool Empty() const
-	{
-		return NodeCount > 0;
-	}
-
-	void Print()
-	{
-		Node<T>* CurrentNode;
-
-		CurrentNode = Head->NextNode;
-
-		while (CurrentNode != nullptr)
-		{
-			std::cout << CurrentNode->Value << std::endl;
-
-			CurrentNode = CurrentNode->NextNode;
-		}
-	}
-
-private:
-
-	Node<T>* Head;
-	Node<T>* Tail;
-	Node<T>* Last;
-	Node<T>* Cursor;
-
-	int NodeCount;
-};
-
-template <typename T>
-int FindSmallest(LinkList<T>& List)
+int FindSmallest(LinkedList<T>& List)
 {
 	int Smallest = List[0];
 
@@ -358,7 +24,7 @@ int FindSmallest(LinkList<T>& List)
 }
 
 template <typename T>
-void SelectionSort(LinkList<T>& Array, LinkList<T>& Result)
+void SelectionSort(LinkedList<T>& Array, LinkedList<T>& Result)
 {
 	int Length = Array.Length();
 
@@ -369,5 +35,157 @@ void SelectionSort(LinkList<T>& Array, LinkList<T>& Result)
 		Array.Delete(Smallest);
 
 		Result.Append(Smallest);
+	}
+}
+
+int Fibonacci(int n)
+{
+	if (n == 1 || n == 2)
+	{
+		return 1;
+	}
+	else
+	{
+		return Fibonacci(n - 1) + Fibonacci(n - 2);
+	}
+}
+
+template <typename T>
+void Print(T Content)
+{
+	std::cout << Content << std::endl;
+}
+
+int Factorial(int n)
+{
+	Print(n);
+
+	if (n == 1)
+	{
+		return 1;
+	}
+	else
+	{
+		return n * Factorial(n - 1);
+	}
+}
+
+int Sum(std::vector<int> Array)
+{
+	if (Array.empty())
+	{
+		return 0;
+	}
+	else
+	{
+		int First = Array[0];
+		Array.erase(Array.begin());
+		return First + Sum(Array);
+	}
+}
+
+int Counter(std::vector<int> Array)
+{
+	if (Array.size() == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		Array.erase(Array.begin());
+
+		return 1 + Counter(Array);
+	}
+}
+
+int Max(std::vector<int> Array)
+{
+	if (Array.size() == 1)
+	{
+		return Array[0];
+	}
+	else
+	{
+		if (Array[0] > Array[1])
+		{
+			Array.erase(Array.begin() + 1);
+		}
+		else
+		{
+			Array.erase(Array.begin());
+		}
+
+		return Max(Array);
+	}
+}
+
+//int Divide(int Width, int Height)
+//{
+//	static int OriginWidth = Width;
+//	static int OriginHeight = Height;
+//
+//	if (Width == Height && ((OriginWidth % Width) == 0 && (OriginHeight % Height) == 0))
+//	{
+//		return Width;
+//	}
+//	else
+//	{
+//		if (Width > Height)
+//		{
+//			int Left = Width - Height * 2;
+//
+//			if (Left > 0)
+//			{
+//				return Divide(Left, Height);
+//			}
+//			else
+//			{
+//				return Divide(Width - Height, Height);
+//			}
+//		}
+//		else
+//		{
+//			int Left = Height - Width * 2;
+//
+//			if (Left > 0)
+//			{
+//				return Divide(Width, Left);
+//			}
+//			else
+//			{
+//				return Divide(Width, Height - Width);
+//			}
+//		}
+//	}
+//}
+
+int Divide(int Width, int Height)
+{
+	// 记录原始的土地尺寸。
+	static int OriginWidth = Width;
+	static int OriginHeight = Height;
+
+	// 因为问题要求土地划分为方形，也就是最终计算的最大地块长宽要相等，
+	// 同时这个大小是可以被土地的原始长宽整除，这就是基线条件。
+	if (Width == Height && ((OriginWidth % Width) == 0 && (OriginHeight % Height) == 0))
+	{
+		return Width;
+	}
+	else
+	{
+		// 每次递归用较大的边长减去较小的边长，余下的部分继续递归。
+		// 具体过程可以看前面的配图部分。
+		if (Width > Height)
+		{
+			int Left = Width - Height;
+
+			return Divide(Left, Height);
+		}
+		else
+		{
+			int Left = Height - Width;
+
+			return Divide(Width, Left);
+		}
 	}
 }

@@ -151,7 +151,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DataType.h" />
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>

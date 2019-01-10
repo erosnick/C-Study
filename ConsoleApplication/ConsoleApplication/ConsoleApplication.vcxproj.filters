@@ -18,6 +18,15 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataType.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>头文件</Filter>
     </ClInclude>
