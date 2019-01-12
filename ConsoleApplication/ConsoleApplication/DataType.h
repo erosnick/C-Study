@@ -8,9 +8,11 @@ struct Node
 	Node()
 	{
 		Value = INVAILD;
-		NextNode = nullptr;
+		Next = nullptr;
+		Prior = nullptr;
 	}
 
 	T Value;
-	Node* NextNode;
+	Node* Next;
+	Node* Prior;
 };

@@ -30,6 +30,12 @@
     <ClInclude Include="Utility.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DoubleLinkedList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

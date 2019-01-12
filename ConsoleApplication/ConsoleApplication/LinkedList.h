@@ -10,19 +10,18 @@ public:
 	LinkedList()
 	{
 		Head = new Node<T>();
-		Tail = Head->NextNode;
 		Cursor = Head;
-
+		Last = nullptr;
 		NodeCount = 0;
 	}
 
 	~LinkedList()
 	{
-		Node<T>* CurrentNode = Head->NextNode;
+		Node<T>* CurrentNode = Head->Next;
 
 		while (CurrentNode != nullptr)
 		{
-			Head = CurrentNode->NextNode;
+			Head = CurrentNode->Next;
 
 			delete CurrentNode;
 
@@ -38,34 +37,34 @@ public:
 
 			for (int i = 1; i <= Position; i++)
 			{
-				Temp = Temp->NextNode;
+				Temp = Temp->Next;
 			}
 
 			Node<T>* NewNode = new Node<T>();
 			NewNode->Value = Value;
-			NewNode->NextNode = Temp->NextNode;
-			Temp->NextNode = NewNode;
+			NewNode->Next = Temp->Next;
+			Temp->Next = NewNode;
 		}
 	}
 
 	void Delete(T Value)
 	{
 		Node<T>* PreNode = Head;
-		Node<T>* Temp = Head->NextNode;
+		Node<T>* Temp = Head->Next;
 
 		while (Temp != nullptr)
 		{
 			if (Temp->Value == Value)
 			{
-				PreNode->NextNode = Temp->NextNode;
+				PreNode->Next = Temp->Next;
 
 				delete Temp;
 
 				break;
 			}
 
-			Temp = Temp->NextNode;
-			PreNode = PreNode->NextNode;
+			Temp = Temp->Next;
+			PreNode = PreNode->Next;
 		}
 
 		NodeCount--;
@@ -76,21 +75,21 @@ public:
 		int Index = 0;
 
 		Node<T>* PreNode = Head;
-		Node<T>* Temp = Head->NextNode;
+		Node<T>* Temp = Head->Next;
 
 		while (Temp != nullptr)
 		{
 			if (Index == Position)
 			{
-				PreNode->NextNode = Temp->NextNode;
+				PreNode->Next = Temp->Next;
 
 				delete Temp;
 
 				break;
 			}
 
-			PreNode = PreNode->NextNode;
-			Temp = Temp->NextNode;
+			PreNode = PreNode->Next;
+			Temp = Temp->Next;
 			Index++;
 		}
 
@@ -99,15 +98,13 @@ public:
 
 	void Append(T Value)
 	{
-		if (Head->NextNode == nullptr)
+		if (Head->Next == nullptr)
 		{
 			Node<T>* NewNode = new Node<T>();
 
 			NewNode->Value = Value;
 
-			Head->NextNode = NewNode;
-
-			NewNode->NextNode = Tail;
+			Head->Next = NewNode;
 
 			Last = NewNode;
 
@@ -116,10 +113,9 @@ public:
 			return;
 		}
 
-		Last->NextNode = new Node<T>();
-		Last->NextNode->Value = Value;
-		Last = Last->NextNode;
-		Tail = Last->NextNode;
+		Last->Next = new Node<T>();
+		Last->Next->Value = Value;
+		Last = Last->Next;
 
 		NodeCount++;
 	}
@@ -128,11 +124,11 @@ public:
 	{
 		T Value = 0;
 
-		if (Cursor->NextNode != nullptr)
+		if (Cursor->Next != nullptr)
 		{
-			Value = Cursor->NextNode->Value;
+			Value = Cursor->Next->Value;
 
-			Cursor = Cursor->NextNode;
+			Cursor = Cursor->Next;
 		}
 
 		return Value;
@@ -142,16 +138,16 @@ public:
 	{
 		int Counter = 0;
 
-		while (Cursor->NextNode != nullptr)
+		while (Cursor->Next != nullptr)
 		{
 			if (Counter == Index)
 			{
-				T Value = Cursor->NextNode->Value;
+				T Value = Cursor->Next->Value;
 				Reset();
 				return Value;
 			}
 
-			Cursor = Cursor->NextNode;
+			Cursor = Cursor->Next;
 			Counter++;
 		}
 
@@ -179,20 +175,19 @@ public:
 	{
 		Node<T>* CurrentNode;
 
-		CurrentNode = Head->NextNode;
+		CurrentNode = Head->Next;
 
 		while (CurrentNode != nullptr)
 		{
 			std::cout << CurrentNode->Value << std::endl;
 
-			CurrentNode = CurrentNode->NextNode;
+			CurrentNode = CurrentNode->Next;
 		}
 	}
 
 private:
 
 	Node<T>* Head;
-	Node<T>* Tail;
 	Node<T>* Last;
 	Node<T>* Cursor;
 
@@ -210,7 +205,7 @@ T BinarySearch(const std::vector<T>& Array, T Find)
 
 	auto Counter = 0;
 
-	while (Index != -1)
+	while (true)
 	{
 		Counter++;
 

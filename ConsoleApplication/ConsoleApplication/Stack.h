@@ -33,7 +33,7 @@ public:
 		{
 			auto NewNode = new Node<T>();
 
-			NewNode->NextNode = TopNode;
+			NewNode->Next = TopNode;
 
 			TopNode = NewNode;
 
@@ -51,7 +51,7 @@ public:
 
 			auto TempNode = TopNode;
 
-			TopNode = TopNode->NextNode;
+			TopNode = TopNode->Next;
 
 			delete TempNode;
 
