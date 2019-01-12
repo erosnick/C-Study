@@ -12,8 +12,25 @@ public:
 	{
 		Head = new Node<T>;
 		Tail = new Node<T>;
-
 		Last = nullptr;
+		NodeCount = 0;
+	}
+
+	DoubleLinkedList(const DoubleLinkedList<int>& Lhs)
+	{
+		Head = new Node<T>();
+		Tail = new Node<T>();
+		Last = nullptr;
+		NodeCount = 0;
+
+		Node<T>* Cursor = Lhs.Head->Next;
+
+		while (Cursor != nullptr)
+		{
+			Append(Cursor->Value);
+
+			Cursor = Cursor->Next;
+		}
 	}
 
 	~DoubleLinkedList()
@@ -83,6 +100,18 @@ public:
 		Cursor->Next = NewNode;
 
 		NodeCount++;
+	}
+
+	void Insert(const DoubleLinkedList<int>& List)
+	{
+		Node<T>* Cursor = List.Head->Next;
+
+		while (Cursor != List.Tail)
+		{
+			Append(Cursor->Value);
+
+			Cursor = Cursor->Next;
+		}
 	}
 
 	void Delete(T Value)
@@ -156,7 +185,7 @@ public:
 		}
 	}
 
-private:
+public:
 
 	Node<T>* Head;
 	Node<T>* Tail;

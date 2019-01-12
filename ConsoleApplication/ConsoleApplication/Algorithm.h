@@ -234,12 +234,11 @@ std::vector<int> QuickSort(std::vector<int> Array)
 }
 
 template <typename T>
-DoubleLinkedList<T>* Merge(const DoubleLinkedList<T>& Lhs, const DoubleLinkedList<T>& Rhs)
+DoubleLinkedList<T>& Merge(const DoubleLinkedList<T>& Lhs, const DoubleLinkedList<T>& Rhs, DoubleLinkedList<T>& Result)
 {
-	DoubleLinkedList<T> First = Lhs;
-	DoubleLinkedList<T> Second = Rhs;
+	Result = Lhs;
 
-	First.Tail = Second.Head;
+	Result.Insert(Rhs);
 
-	First.Print();
+	return Result;
 }
