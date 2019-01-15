@@ -245,7 +245,7 @@ DoubleLinkedList<T>& Merge(const DoubleLinkedList<T>& Lhs, const DoubleLinkedLis
 	return Result;
 }
 
-std::string Infix2Subfix(const std::string& Infix)
+std::string Infix2Suffix(const std::string& Infix)
 {
 	Stack<char> Operators;
 	std::string Subfix;
@@ -280,7 +280,7 @@ std::string Infix2Subfix(const std::string& Infix)
 			}
 			else
 			{
-				// 遇到右括号，出栈所有元素并输出。
+				// 遇到右括号，出栈所有元素并输出，直到')'出栈。
 				if (Ch == ')')
 				{
 					while (true)
@@ -301,7 +301,7 @@ std::string Infix2Subfix(const std::string& Infix)
 				{
 					if (Operators.Size() > 0)
 					{
-						if (Operators.Top() != '(' && Operators.Top() != ')')
+						if (Operators.Top() != '(')
 						{
 							// 如果操作符优先级大于栈顶元素，直接入栈。
 							if (Priority[Ch] > Priority[Operators.Top()])
@@ -331,6 +331,7 @@ std::string Infix2Subfix(const std::string& Infix)
 					}
 					else
 					{
+						// 栈为空，操作符直接入栈。
 						Operators.Push(Ch);
 					}
 				}
@@ -347,11 +348,11 @@ std::string Infix2Subfix(const std::string& Infix)
 	return Subfix;
 }
 
-int Calculate(const std::string& Subfix)
+int Calculate(const std::string& Suffix)
 {
 	Stack<int> Operation;
 
-	for (char Ch : Subfix)
+	for (char Ch : Suffix)
 	{
 		if (Ch >= 48 && Ch <= 57)
 		{

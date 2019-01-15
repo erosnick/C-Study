@@ -156,6 +156,7 @@
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
