@@ -80,7 +80,7 @@ public:
 
 	bool Empty() const
 	{
-		return StackSize > 0;
+		return StackSize == 0;
 	}
 
 private:

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <string>
+#include <map>
 
 template <typename T>
 int FindSmallest(LinkedList<T>& List)
@@ -241,4 +243,157 @@ DoubleLinkedList<T>& Merge(const DoubleLinkedList<T>& Lhs, const DoubleLinkedLis
 	Result.Insert(Rhs);
 
 	return Result;
+}
+
+std::string Infix2Subfix(const std::string& Infix)
+{
+	Stack<char> Operators;
+	std::string Subfix;
+
+	std::map<char, int> Priority;
+
+	Priority['+'] = 0;
+	Priority['-'] = 0;
+	Priority['*'] = 1;
+	Priority['/'] = 1;
+	Priority['('] = 2;
+	Priority[')'] = 2;
+
+	const char Add = 43;
+	const int Sub = 45;
+	const int Mul = 42;
+	const int Div = 47;
+
+	for (char Ch : Infix)
+	{
+		// 遇到数字直接输出。
+		if ((Ch >= 48 && Ch <= 57))
+		{
+			Subfix.push_back(Ch);
+		}
+		else
+		{
+			// 遇到左括号直接入栈。
+			if (Ch == '(')
+			{
+				Operators.Push(Ch);
+			}
+			else
+			{
+				// 遇到右括号，出栈所有元素并输出。
+				if (Ch == ')')
+				{
+					while (true)
+					{
+						char Pop = Operators.Pop();
+
+						if (Pop == '(')
+						{
+							break;
+						}
+						else
+						{
+							Subfix.push_back(Pop);
+						}
+					}
+				}
+				else
+				{
+					if (Operators.Size() > 0)
+					{
+						if (Operators.Top() != '(' && Operators.Top() != ')')
+						{
+							// 如果操作符优先级大于栈顶元素，直接入栈。
+							if (Priority[Ch] > Priority[Operators.Top()])
+							{
+								Operators.Push(Ch);
+							}
+							// 当前操作符优先级小于栈顶元素，出栈所有优先级>=当前操作符的元素并输出。
+							else
+							{
+								while (Operators.Size() > 0)
+								{
+									if (Priority[Ch] <= Priority[Operators.Top()])
+									{
+										Subfix.push_back(Operators.Pop());
+									}
+								}
+
+								// 最后入栈当前操作符。
+								Operators.Push(Ch);
+							}
+						}
+						else
+						{
+							// 栈顶元素是'('或')'的情况，直接入栈。
+							Operators.Push(Ch);
+						}
+					}
+					else
+					{
+						Operators.Push(Ch);
+					}
+				}
+			}
+		}
+	}
+
+	// 后缀表达式处理完毕之后，出栈所有元素并输出。
+	while (Operators.Size() > 0)
+	{
+		Subfix.push_back(Operators.Pop());
+	}
+
+	return Subfix;
+}
+
+int Calculate(const std::string& Subfix)
+{
+	Stack<int> Operation;
+
+	for (char Ch : Subfix)
+	{
+		if (Ch >= 48 && Ch <= 57)
+		{
+			Operation.Push(Ch - '0');
+		}
+		else
+		{
+			int Result = 0;
+
+			int Operand1 = Operation.Pop();
+			int Operand2 = Operation.Pop();
+
+			switch (Ch)
+			{
+			case '+':
+
+				Result = Operand1 + Operand2;
+
+				break;
+
+			case '-':
+
+				Result = Operand2 - Operand1;
+
+				break;
+
+			case '*':
+
+				Result = Operand1 * Operand2;
+
+				break;
+
+			case '/':
+
+				Result = Operand2 / Operand1;
+
+				break;
+			}
+
+			Operation.Push(Result);
+		}
+	}
+
+	return Operation.Pop();
 }
