@@ -16,34 +16,34 @@ public:
 		NodeCount = 0;
 	}
 
-	DoubleLinkedList(const DoubleLinkedList<int>& Lhs)
+	DoubleLinkedList& operator=(const DoubleLinkedList& Lhs)
 	{
-		Head = new Node<T>();
-		Tail = new Node<T>();
-		Last = nullptr;
-		NodeCount = 0;
-
-		Node<T>* Cursor = Lhs.Head->Next;
-
-		while (Cursor != nullptr)
+		if (this != &Lhs)
 		{
-			Append(Cursor->Value);
+			Node<T>* Cursor = Lhs.Head->Next;
 
-			Cursor = Cursor->Next;
+			while (Cursor != nullptr)
+			{
+				Append(Cursor->Value);
+
+				Cursor = Cursor->Next;
+			}
 		}
+
+		return *this;
 	}
 
 	~DoubleLinkedList()
 	{
-		Node<T>* Temp = Head;
+		Node<T>* Cursor = nullptr;
 
-		while (Head->Next != nullptr)
+		while (Head != nullptr)
 		{
-			Temp = Head;
-
-			delete Temp;
+			Cursor = Head;
 
 			Head = Head->Next;
+
+			delete Cursor;
 		}
 	}
 
@@ -183,6 +183,11 @@ public:
 				Cursor = Cursor->Prior;
 			}
 		}
+	}
+
+	int Length() const
+	{
+		return NodeCount;
 	}
 
 public:

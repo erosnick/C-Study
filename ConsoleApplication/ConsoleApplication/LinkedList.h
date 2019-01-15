@@ -17,15 +17,15 @@ public:
 
 	~LinkedList()
 	{
-		Node<T>* CurrentNode = Head->Next;
+		Node<T>* CurrentNode = nullptr;
 
-		while (CurrentNode != nullptr)
+		while (Head != nullptr)
 		{
-			Head = CurrentNode->Next;
+			Cursor = Head;
 
-			delete CurrentNode;
+			Head = Head->Next;
 
-			CurrentNode = Head;
+			delete Cursor;
 		}
 	}
 
