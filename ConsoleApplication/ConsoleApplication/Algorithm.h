@@ -398,3 +398,63 @@ int Calculate(const std::string& Suffix)
 
 	return Operation.Pop();
 }
+
+void GetNext(const char* Source, int Next[])
+{
+	int Length = StrLen(Source);
+
+	Next[0] = -1;
+
+	int k = -1;
+
+	int j = 0;
+	
+	while (j < Length - 1)
+	{
+		// InString[k]表示前缀，InString[j]表示后缀。
+		if (k == -1 || Source[j] == Source[k])
+		{
+			++k;
+			++j;
+			Next[j] = k;
+		}
+		else
+		{
+			k = Next[k];
+		}
+	}
+}
+
+int KMPSearch(const char* Source, const char* Pattern, int Next[])
+{
+	int i = 0;
+	int j = 0;
+
+	int SourceLength = StrLen(Source);
+	int PatternLength = StrLen(Pattern);
+
+	while (i < SourceLength && j < PatternLength)
+	{
+		// 1.如果j = -1，或者当前字符匹配成功(即Source[i] = Pattern[j]，都令i++，j++。
+		if (j == -1 || Source[i] == Pattern[j])
+		{
+			i++;
+			j++;
+		}
+		else
+		{
+			// 2.如果j != -1，且当前字符匹配失败(Source[i] != Pattern[i]，则令i不变，j = next[j])。
+			// next[j]即为j所对应的next值。
+			j = Next[j];
+		}
+	}
+
+	if (j == PatternLength)
+	{
+		return i - j;
+	}
+	else
+	{
+		return -1;
+	}
+}

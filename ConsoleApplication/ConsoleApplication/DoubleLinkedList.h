@@ -16,13 +16,13 @@ public:
 		NodeCount = 0;
 	}
 
-	DoubleLinkedList& operator=(const DoubleLinkedList& Lhs)
+	DoubleLinkedList& operator=(const DoubleLinkedList& List)
 	{
-		if (this != &Lhs)
+		if (this != &List)
 		{
-			Node<T>* Cursor = Lhs.Head->Next;
+			Node<T>* Cursor = List.Head->Next;
 
-			while (Cursor != nullptr)
+			while (Cursor != List.Tail)
 			{
 				Append(Cursor->Value);
 
