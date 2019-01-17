@@ -299,6 +299,7 @@ std::string Infix2Suffix(const std::string& Infix)
 				}
 				else
 				{
+					// 处理四则运算符号。
 					if (Operators.Size() > 0)
 					{
 						if (Operators.Top() != '(')
@@ -325,7 +326,7 @@ std::string Infix2Suffix(const std::string& Infix)
 						}
 						else
 						{
-							// 栈顶元素是'('或')'的情况，直接入栈。
+							// 栈顶元素是'('的情况，直接入栈。
 							Operators.Push(Ch);
 						}
 					}
@@ -348,16 +349,19 @@ std::string Infix2Suffix(const std::string& Infix)
 	return Subfix;
 }
 
+// 计算后缀表达式。
 int Calculate(const std::string& Suffix)
 {
 	Stack<int> Operation;
 
 	for (char Ch : Suffix)
 	{
+		// 遇到数字，将数字入栈备用。
 		if (Ch >= 48 && Ch <= 57)
 		{
 			Operation.Push(Ch - '0');
 		}
+		// 遇到运算符，出栈两个操作数进行计算，然后将结果入栈。
 		else
 		{
 			int Result = 0;
@@ -399,6 +403,74 @@ int Calculate(const std::string& Suffix)
 	return Operation.Pop();
 }
 
+int StrLen(const char* InString)
+{
+	if (*InString == '\0')
+	{
+		return 0;
+	}
+	else
+	{
+		return StrLen(InString + 1) + 1;
+	}
+}
+
+// Length的长度为字符串长度+1，多出来的一个字节是用于结尾符'\0'。
+char* StrCpy(char* Dest, int Length, const char* Src)
+{
+	assert("Invalid parameter." && Dest != nullptr && Src != nullptr);
+
+	char* P = Dest;
+
+	int Available = Length;
+
+	// 注意这里要用一个临时指针来赋值，
+	// 千万不能用Dest，因为会改变指针的值。
+	while ((*P++ = *Src++) != 0 && --Available > 0);
+
+	// 长度不够，清空目标内存空间并引发断言。
+	if (Available == 0)
+	{
+		memset(Dest, 0, Length);
+		assert("Buffer too small!" && 0);
+	}
+
+	P = '\0';
+
+	return Dest;
+}
+
+// 拷贝指定数量的字符。
+char* StrNCpy(char* Dest, int Length, const char* Src, int MaxCount)
+{
+	assert("Invalid parameter." && Dest != nullptr && Src != nullptr);
+	assert("MaxCount > Length + 1" && MaxCount < Length);
+
+	char* P = Dest;
+
+	int Available = MaxCount + 1;
+
+	// 注意这里要用一个临时指针来赋值，
+	// 千万不能用Dest，因为会改变指针的值。
+	while (Available > 1)
+	{
+		(*P++ = *Src++);
+
+		Available--;
+	}
+
+	// 长度不够，清空目标内存空间并引发断言。
+	if (Available == 0)
+	{
+		memset(Dest, 0, Length);
+		assert("Buffer too small!" && 0);
+	}
+
+	P = '\0';
+
+	return Dest;
+}
+
 void GetNext(const char* Source, int Next[])
 {
 	int Length = StrLen(Source);
@@ -420,6 +492,7 @@ void GetNext(const char* Source, int Next[])
 		}
 		else
 		{
+			// 回溯k，寻找更短的相同前缀后缀。
 			k = Next[k];
 		}
 	}
@@ -448,6 +521,46 @@ int KMPSearch(const char* Source, const char* Pattern, int Next[])
 			j = Next[j];
 		}
 	}
+
+	if (j == PatternLength)
+	{
+		return i - j;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+int KMPSearch(const char* Source, const char* Pattern)
+{
+	int i = 0;
+	int j = 0;
+
+	int SourceLength = StrLen(Source);
+	int PatternLength = StrLen(Pattern);
+
+	int* Next = new int[PatternLength];
+	
+	GetNext(Pattern, Next);
+
+	while (i < SourceLength && j < PatternLength)
+	{
+		// 1.如果j = -1，或者当前字符匹配成功(即Source[i] = Pattern[j]，都令i++，j++。
+		if (j == -1 || Source[i] == Pattern[j])
+		{
+			i++;
+			j++;
+		}
+		else
+		{
+			// 2.如果j != -1，且当前字符匹配失败(Source[i] != Pattern[i]，则令i不变，j = next[j])。
+			// next[j]即为j所对应的next值。
+			j = Next[j];
+		}
+	}
+
+	delete[] Next;
 
 	if (j == PatternLength)
 	{

@@ -3,42 +3,7 @@
 #include <ostream>
 #include <cassert>
 
-int StrLen(const char* InString)
-{
-	if (*InString == '\0')
-	{
-		return 0;
-	}
-	else
-	{
-		return StrLen(InString + 1) + 1;
-	}
-}
-
-// Length的长度为字符串长度+1，多出来的一个字节是用于结尾符'\0'。
-char* StrCpy(char* Dest, int Length, const char* Src)
-{
-	assert("Invalid parameter." && Dest != nullptr && Src != nullptr);
-
-	char* P = Dest;
-
-	int Available = Length;
-
-	// 注意这里要用一个临时指针来赋值，
-	// 千万不能用Dest，因为会改变指针的值。
-	while ((*P++ = *Src++) != 0 && --Available > 0);
-
-	// 长度不够，清空目标内存空间并引发断言。
-	if (Available == 0)
-	{
-		memset(Dest, 0, Length);
-		assert("Buffer too small!" && 0);
-	}
-
-	P = '\0';
-
-	return Dest;
-}
+#include "Algorithm.h"
 
 class String
 {
@@ -46,9 +11,8 @@ public:
 
 	String()
 	{
-		PString = new char[0];
+		PString = nullptr;
 		Size = 0;
-		printf("fuck");
 	}
 
 	String(const char* InString)
@@ -60,6 +24,7 @@ public:
 		StrCpy(PString, Size + 1, InString);
 	}
 
+	// 赋值构造函数。
 	String(const String& InString)
 	{
 		Size = InString.Length();
@@ -69,6 +34,7 @@ public:
 		StrCpy(PString, Size + 1, InString.PString);
 	}
 
+	// 赋值操作符重载。
 	String& operator=(const String& InString)
 	{
 		Assign(InString.PString);
@@ -88,14 +54,32 @@ public:
 
 			PString = new char[InStringLength + 1];
 
-			Size = InStringLength + 1;
-
 			StrCpy(PString, InStringLength + 1, InString);
 		}
 		else
 		{
 			StrCpy(PString, InStringLength + 1, InString);
 		}
+
+		Size = InStringLength;
+
+		return *this;
+	}
+
+	String& Append(const char* InString)
+	{
+		int Length = StrLen(InString);
+
+		char* Temp = new char[Length + Size + 1];
+
+		StrCpy(Temp, Size + 1, PString);
+		StrCpy(Temp + Size, Length + 1, InString);
+
+		delete PString;
+
+		PString = Temp;
+
+		Size += Length;
 
 		return *this;
 	}
@@ -136,6 +120,166 @@ public:
 		}
 
 		return Result;
+	}
+
+	String SubString(int Position, int Length)
+	{
+		assert(Position >= 0 && Position < Size && "Position out of range!");
+
+		int CopyLength = Length;
+
+		if ((Position + Length) > Size)
+		{
+			CopyLength = Size;
+		}
+
+		char* PSubString = new char[CopyLength + 1];
+
+		memset(PSubString, 0, CopyLength + 1);
+
+		StrNCpy(PSubString, CopyLength + 1, PString, CopyLength);
+
+		String Sub;
+
+		Sub.PString = PSubString;
+		Sub.Size = CopyLength;
+
+		return Sub;
+	}
+
+	// 使用KMP算法搜索子串。
+	int Search(const char* Pattern)
+	{
+		int Length = StrLen(Pattern);
+
+		int* Next = new int[Length];
+
+		GetNext(Pattern, Next);
+
+		int Find = KMPSearch(PString, Pattern, Next);
+
+		delete [] Next;
+
+		return Find;
+	}
+
+	String& Replace(const char* Pattern, const char* ReplaceString)
+	{
+		int Find = KMPSearch(PString, Pattern);
+
+		if (Find < 0)
+		{
+			return *this;
+		}
+		else
+		{
+			int PatternLength = StrLen(Pattern);
+			int ReplaceLength = StrLen(ReplaceString);
+
+			if (PatternLength == ReplaceLength)
+			{
+				for (int i = 0; i <  PatternLength; i++)
+				{
+					PString[i + Find] = ReplaceString[i];
+				}
+			}
+			else
+			{
+				int NewStringLength = Size - PatternLength + ReplaceLength + 1;
+				char* NewString = new char[NewStringLength];
+
+				memset(NewString, 0, NewStringLength);
+
+				if (Find > 0)
+				{
+					StrNCpy(NewString, NewStringLength, PString, Find);
+				}	
+				
+				StrCpy(NewString + Find, NewStringLength, ReplaceString);
+
+				int Offset = Find + ReplaceLength;
+				StrNCpy(NewString + Offset, NewStringLength, PString + Find + PatternLength, Size - Find - PatternLength);
+
+				delete PString;
+
+				PString = NewString;
+
+				Size = NewStringLength;
+			}
+		}
+
+		return Replace(Pattern, ReplaceString);
+	}
+
+	String& Insert(int Position, const char* InsertString)
+	{
+		assert(Position >= 0 && Position < Size && "Position out of range!");
+
+		if (Position == Size - 1)
+		{
+			Append(InsertString);
+		}
+
+		int InsertStringLength = StrLen(InsertString);
+
+		int NewStringLength = Size + InsertStringLength + 1;
+
+		char* NewString = new char[NewStringLength];
+
+		memset(NewString, 0, NewStringLength);
+
+		if (Position == 0)
+		{
+			StrCpy(NewString, NewStringLength, InsertString);
+			StrCpy(NewString + NewStringLength, Size + 1, PString);
+		}
+
+		StrNCpy(NewString, NewStringLength, PString, Position);
+		StrNCpy(NewString + Position, NewStringLength, InsertString, InsertStringLength);
+		StrNCpy(NewString + Position + InsertStringLength, NewStringLength, PString + Position, Size - Position);
+
+		delete PString;
+
+		PString = NewString;
+
+		Size += InsertStringLength;
+
+		return *this;
+	}
+
+	String& Delete(int Position, int Length)
+	{
+		assert(Position >= 0 && Position < Size && Length <= Size && "Out of range!");
+
+
+		int DeleteLength = Length;
+
+		if (Length > (Size - Position))
+		{
+			DeleteLength = Size - Position;
+		}
+
+		int NewStringLength = Size - DeleteLength + 1;
+
+		char* NewString = new char[NewStringLength];
+
+		memset(NewString, 0, NewStringLength);
+
+		if (Position == 0)
+		{
+			StrNCpy(NewString, NewStringLength, PString + Length, Size - Length - 1);
+		}
+
+		StrNCpy(NewString, NewStringLength, PString, Position);
+		StrNCpy(NewString + Position, NewStringLength, PString + Position + DeleteLength, Size - DeleteLength - Position);
+
+		delete PString;
+
+		PString = NewString;
+
+		Size -= DeleteLength;
+
+		return *this;
 	}
 
 	String& ToLower()
@@ -194,7 +338,7 @@ public:
 
 	char operator[](int Index)
 	{
-		assert("Out of range!" && Index <= (Size - 1));
+		assert(Index >= 0 && Index < Size && "Index out of range!");
 
 		return PString[Index];
 	}
