@@ -21,9 +21,15 @@ struct BTNode
 	{
 		LeftChild = nullptr;
 		RightChild = nullptr;
+		LeftTag = Link;
+		RightTag = Link;
 	}
+
+	enum PointerTag { Link, Thread };
 
 	T Data;
 	BTNode<T>* LeftChild;
 	BTNode<T>* RightChild;
+	PointerTag LeftTag;
+	PointerTag RightTag;
 };
