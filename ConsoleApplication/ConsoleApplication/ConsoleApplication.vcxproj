@@ -23,7 +23,7 @@
     <ProjectGuid>{9A77FE5A-772A-41D4-95FE-C93EB5BE7D62}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>ConsoleApplication</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -91,6 +91,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\Development\Visual Leak Detector\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -153,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
+    <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="DataType.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="LinkedList.h" />
