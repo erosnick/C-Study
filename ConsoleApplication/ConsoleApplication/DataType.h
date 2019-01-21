@@ -1,5 +1,6 @@
 #pragma once
 
+// 链表的数据结构。
 template <typename T>
 struct Node
 {
@@ -12,24 +13,4 @@ struct Node
 	T Value;
 	Node* Next;
 	Node* Prior;
-};
-
-template <typename T>
-struct BTNode
-{
-	BTNode()
-	{
-		LeftChild = nullptr;
-		RightChild = nullptr;
-		LeftTag = Link;
-		RightTag = Link;
-	}
-
-	enum PointerTag { Link, Thread };
-
-	T Data;
-	BTNode<T>* LeftChild;
-	BTNode<T>* RightChild;
-	PointerTag LeftTag;
-	PointerTag RightTag;
 };

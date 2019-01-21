@@ -157,6 +157,7 @@
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="DataType.h" />
     <ClInclude Include="DoubleLinkedList.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Queue.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Caller1.cpp" />
     <ClCompile Include="Caller2.cpp" />
     <ClCompile Include="ConsoleApplication.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

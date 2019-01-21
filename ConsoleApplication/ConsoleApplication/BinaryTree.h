@@ -1,8 +1,28 @@
 #pragma once
 
-#include "DataType.h"
 #include "Utility.h"
 #include <functional>
+
+// 二叉树的数据结构。
+template <typename T>
+struct BTNode
+{
+	BTNode()
+	{
+		LeftChild = nullptr;
+		RightChild = nullptr;
+		LeftTag = Link;
+		RightTag = Link;
+	}
+
+	enum PointerTag { Link, Thread };
+
+	T Data;
+	BTNode<T>* LeftChild;
+	BTNode<T>* RightChild;
+	PointerTag LeftTag;
+	PointerTag RightTag;
+};
 
 template <typename T>
 class BinaryTree

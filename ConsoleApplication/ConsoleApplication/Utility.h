@@ -1,10 +1,6 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
-
-#include "LinkedList.h"
-#include "DoubleLinkedList.h"
 
 #ifndef NDEBUG
 #   define ASSERT(condition, message) \
@@ -18,3 +14,9 @@
 #else
 #   define ASSERT(condition, message) do { } while (false)
 #endif
+
+template <typename T>
+void Print(T Content)
+{
+	std::cout << Content << std::endl;
+}

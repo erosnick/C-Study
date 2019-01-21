@@ -49,12 +49,6 @@ int Fibonacci(int n)
 	}
 }
 
-template <typename T>
-void Print(T Content)
-{
-	std::cout << Content << std::endl;
-}
-
 int Factorial(int n)
 {
 	Print(n);
