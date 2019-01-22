@@ -565,3 +565,45 @@ int KMPSearch(const char* Source, const char* Pattern)
 		return -1;
 	}
 }
+
+// 图遍历算法
+
+// 访问标志数组。
+bool Visited[255];
+
+// 邻接矩阵的深度优先递归算法。
+void DepthFirstSearch(const AdjacentMatrixGraph& Graph, int i)
+{
+	int j = 0;
+
+	Visited[i] = true;
+
+	// 打印顶点，也可以是其他操作。
+	Print(Graph.Vertices[i]);
+
+	for (j = 0; j < Graph.NumVertexs; j++)
+	{
+		if (Graph.Arc[i][j] == 1 && !Visited[j])
+		{
+			// 对未访问的邻接顶点递归调用。
+			DepthFirstSearch(Graph, j);
+		}
+	}
+}
+
+void DepthFirstSearchTraverse(const AdjacentMatrixGraph& Graph)
+{
+	int i = 0;
+
+	for (i = 0; i < Graph.NumVertexs; i++)
+	{
+		// 初始化所有顶点状态都是未访问过状态。
+		Visited[i] = false;
+
+		for (i = 0; i < Graph.NumVertexs; i++)
+		{
+			// 对未访问过的顶点调用DFS,若是连通图，只会执行一次。
+			DepthFirstSearch(Graph, i);
+		}
+	}
+}

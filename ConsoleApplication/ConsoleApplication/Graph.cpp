@@ -13,14 +13,25 @@ AdjacentListGraph::~AdjacentListGraph()
 	Clear();
 }
 
-void Graph::CreateGraph(int NumVertexs, int NumEdges)
+void AdjacentMatrixGraph::Create()
 {
 	int i, j, k, w;
 
+	Print("请输入顶点数:");
+
+	std::cin >> NumVertexs;
+
+	Print("请输入边数:");
+
+	std::cin >> NumEdges;
+
 	// 读入顶点信息，建立顶点表。
+	
+	Print("请输入顶点信息:");
+
 	for (i = 0; i < NumVertexs; i++)
 	{
-		scanf_s("%c", &Vertices[i], 1);
+		std::cin >> Vertices[i];
 	}
 
 	// 邻接矩阵初始化。
@@ -32,12 +43,13 @@ void Graph::CreateGraph(int NumVertexs, int NumEdges)
 		}
 	}
 
+	
+	Print("输入边(vi, vj)上的下标i, 下标j和权w:");
+
 	// 读入NumEdges条边，建立邻接矩阵。
 	for (k = 0; k < NumEdges; k++)
 	{
-		Print("输入边(vi, vj)上的下标i, 下标j和权w:");
-
-		scanf_s("%d, %d, %d", &i, &j, &w);
+		std::cin >> i >> j >> w;
 
 		Arc[i][j] = w;
 		Arc[j][i] = Arc[i][j];	// 因为是无向图，矩阵对称。

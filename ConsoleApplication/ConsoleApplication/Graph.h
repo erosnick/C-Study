@@ -27,16 +27,16 @@ struct VertexNode
 
 typedef VertexNode AdjacentList[MAXVERTEX];
 
-class Graph
+class AdjacentMatrixGraph
 {
 public:
 
-	void CreateGraph(int NumVertexs, int NumEdges);
-
-private:
+	void Create();
 
 	VertexType Vertices[MAXVERTEX];
 	EdgeType Arc[MAXVERTEX][MAXVERTEX];
+	int NumVertexs;
+	int NumEdges;
 };
 
 class AdjacentListGraph
