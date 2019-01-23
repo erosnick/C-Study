@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 
+#include "Graph.h"
+
 template <typename T>
 int FindSmallest(LinkedList<T>& List)
 {

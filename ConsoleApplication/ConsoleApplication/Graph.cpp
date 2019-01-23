@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Graph.h"
 #include "Utility.h"
+#include <fstream>
 
 AdjacentListGraph::AdjacentListGraph()
 {
@@ -16,6 +17,14 @@ AdjacentListGraph::~AdjacentListGraph()
 void AdjacentMatrixGraph::Create()
 {
 	int i, j, k, w;
+
+	std::ofstream File;
+
+	File.open("Graph.txt", std::ios::out);
+
+	File << "Fuck yeah." << std::endl;
+
+	File.close();
 
 	Print("ÇëÊäÈë¶¥µãÊý:");
 
