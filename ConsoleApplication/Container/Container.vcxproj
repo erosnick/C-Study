@@ -156,6 +156,9 @@
     <ClCompile Include="Array.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Array /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="Bitvector.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Bitvector /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

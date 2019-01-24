@@ -45,27 +45,20 @@ namespace Container
 
 		Array()
 		{
-			ArrayPtr = new T[DefaultSize];
+			ArrayPtr = new T[DefaultCapacity];
 
 			ElementCount = 0;
 
-			ArrayCapacity = DefaultSize;
+			ArrayCapacity = DefaultCapacity;
 		}
 
 		Array(int Size)
 		{
-			int AllocateSize = DefaultSize;
+			ArrayCapacity = DefaultCapacity;
 
-			if (Size > DefaultSize)
-			{
-				AllocateSize = (Size / DefaultSize + 1) * DefaultSize;
-			}
+			Resize(Size);
 
-			ArrayPtr = new T[AllocateSize];
 			ElementCount = Size;
-			memset(ArrayPtr, 0, sizeof(T) * ElementCount);
-
-			ArrayCapacity = AllocateSize;
 		}
 
 		// 支持C++11的uniform initialization。
@@ -86,16 +79,44 @@ namespace Container
 		}
 
 		// 重新设置数组的尺寸。
-		void Resize(int NewSize)
+		void Resize(size_t NewSize)
 		{
-			T* NeWArray = new T[NewSize];
+			size_t AllocateSize = NewSize;
 
-			memset(NeWArray, 0, sizeof(T) * NewSize);
-			memcpy_s(NeWArray, sizeof(T) * NewSize, ArrayPtr, sizeof(T) * ElementCount);
+			if (NewSize % ArrayCapacity == 0)
+			{
+				AllocateSize = NewSize / DefaultCapacity * DefaultCapacity;
+			}
+			else
+			{
+				AllocateSize = (NewSize / DefaultCapacity + 1) * DefaultCapacity;
+			}
+
+			T* NeWArray = new T[AllocateSize];
+
+			memset(NeWArray, 0, sizeof(T) * AllocateSize);
+
+			size_t Min = 0;
+
+			if (AllocateSize > ElementCount)
+			{
+				Min = ElementCount;
+			}
+			else
+			{
+				Min = AllocateSize;
+			}
+
+			for (int i = 0; i < Min; i++)
+			{
+				NeWArray[i] = ArrayPtr[i];
+			}
+
+			delete[] ArrayPtr;
 
 			ArrayPtr = NeWArray;
 
-			delete[] ArrayPtr;
+			ArrayCapacity = AllocateSize;
 		}
 
 		// 在指定索引位置插入一个元素。
@@ -114,6 +135,18 @@ namespace Container
 			}
 
 			ArrayPtr[Index] = Data;
+		}
+
+		void Push(T Data)
+		{
+			if (ElementCount == ArrayCapacity)
+			{
+				Resize(ElementCount + DefaultCapacity);
+			}
+
+			ArrayPtr[ElementCount] = Data;
+
+			ElementCount++;
 		}
 
 		// 删除指定索引位置的元素。
@@ -143,9 +176,7 @@ namespace Container
 				return false;
 			}
 
-			size_t Size = sizeof(T) * ElementCount;
-
-			fwrite((void*)&Size, sizeof(int), 1, OutFile);
+			fwrite((void*)&ElementCount, sizeof(int), 1, OutFile);
 
 			uint64_t Written = fwrite(ArrayPtr, sizeof(T), ElementCount, OutFile);
 
@@ -170,11 +201,9 @@ namespace Container
 				return false;
 			}
 
-			int Size = 0;
+			fread_s((void*)&ElementCount, sizeof(int), sizeof(int), 1, InFile);
 
-			fread_s((void*)&Size, sizeof(int), sizeof(int), 1, InFile);
-
-			uint64_t Readed = fread_s(ArrayPtr, sizeof(T) * ElementCount, sizeof(T), ElementCount, InFile);
+			uint64_t Readed = fread_s(ArrayPtr, sizeof(T) * ArrayCapacity, sizeof(T), ElementCount, InFile);
 
 			fclose(InFile);
 
@@ -229,10 +258,9 @@ namespace Container
 		}
 
 	private:
-		static const int DefaultSize = 32;
+		static const size_t DefaultCapacity = 32;
 		size_t ArrayCapacity;
 		size_t ElementCount;
-		size_t ArraySize;
 		T* ArrayPtr;
 	};
 }
