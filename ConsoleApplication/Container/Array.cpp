@@ -176,7 +176,7 @@ namespace Container
 				return false;
 			}
 
-			fwrite((void*)&ElementCount, sizeof(int), 1, OutFile);
+			fwrite(&ElementCount, sizeof(int), 1, OutFile);
 
 			uint64_t Written = fwrite(ArrayPtr, sizeof(T), ElementCount, OutFile);
 
@@ -201,7 +201,7 @@ namespace Container
 				return false;
 			}
 
-			fread_s((void*)&ElementCount, sizeof(int), sizeof(int), 1, InFile);
+			fread_s(&ElementCount, sizeof(int), sizeof(int), 1, InFile);
 
 			uint64_t Readed = fread_s(ArrayPtr, sizeof(T) * ArrayCapacity, sizeof(T), ElementCount, InFile);
 

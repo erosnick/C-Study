@@ -7,6 +7,10 @@ import Entity;
 using namespace Container;
 using namespace Entity;
 
+const int SEEK_CUR = 1;
+const int SEEK_END = 2;
+const int SEEK_SET = 0;
+
 int main()
 {
 	//Array<char> CharArray = { 'a', 'b', 'c', 'd', 'e' };
@@ -66,7 +70,7 @@ int main()
 	//}
 
 	//Bitvector Bits(33);
-	
+
 	//Bitvector Bits(1);
 
 	//for (int i = 0; i < 32; i++)
@@ -92,29 +96,76 @@ int main()
 	//	printf("%d", Bits[i]);
 	//}
 
-	Array<Player> Players(3);
+	//Array<Player> Players(3);
 
-	for (int i = 0; i < 3; i++)
-	{
-		Players[i].HP = rand() % 5 + 10;
-		Players[i].EXP = rand() % 10 + 50;
-		Players[i].Level = rand() % 10 + 1;
-		Players[i].Money = rand() % 100 + 1;
-	}
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	Players[i].HP = rand() % 5 + 10;
+	//	Players[i].EXP = rand() % 10 + 50;
+	//	Players[i].Level = rand() % 10 + 1;
+	//	Players[i].Money = rand() % 100 + 1;
+	//}
 
-	Players.Write("Players.data");
+	//Players.Write("Players.dat");
 
-	for (int i = 0; i < 3; i++)
-	{
-		printf("******\n");
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	printf("******\n");
 
-		printf("Player%d\n\n", i);
+	//	printf("Player%d\n\n", i);
 
-		printf("HP=%d\n", Players[i].HP);
-		printf("EXP=%d\n", Players[i].EXP);
-		printf("Level=%d\n", Players[i].Level);
-		printf("Money=%d\n", Players[i].Money);
+	//	printf("HP=%d\n", Players[i].HP);
+	//	printf("EXP=%d\n", Players[i].EXP);
+	//	printf("Level=%d\n", Players[i].Level);
+	//	printf("Money=%d\n", Players[i].Money);
 
-		printf("******\n\n");
-	}
+	//	printf("******\n\n");
+	//}
+
+	//FILE* InFile = nullptr;
+
+	//fopen_s(&InFile, "Players.dat", "rb+");
+
+	//if (InFile != nullptr)
+	//{
+	//	Player God;
+	//	God.HP = 999;
+	//	God.EXP = 999;
+	//	God.Level = 99;
+	//	God.Money = 999;
+
+	//	fseek(InFile, sizeof(Player) * 2 + 4, SEEK_SET);
+	//	uint64_t Written = fwrite(&God, sizeof(Player), 1, InFile);
+
+	//	fclose(InFile);
+	//}
+
+	//Players.Read("Players.dat");
+
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	printf("******\n");
+
+	//	printf("Player%d\n\n", i);
+
+	//	printf("HP=%d\n", Players[i].HP);
+	//	printf("EXP=%d\n", Players[i].EXP);
+	//	printf("Level=%d\n", Players[i].Level);
+	//	printf("Money=%d\n", Players[i].Money);
+
+	//	printf("******\n\n");
+
+	int TwoDimensionArray[3][3] = { {1, 2, 3},
+									{4, 5, 6},
+									{7, 8, 9} };
+
+	int ThreeDimensionArray[2][2][2] = { {{1, 2}, 
+										  {3, 4}},
+
+									     {{5, 6}, 
+										  {7, 8}}
+									   };
+
+	printf("%d\n", ThreeDimensionArray[1][1][0]);
+	printf("%d\n", ThreeDimensionArray[1][1][1]);
 }

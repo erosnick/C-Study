@@ -93,7 +93,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>true</EnableModules>
-      <AdditionalIncludeDirectories>D:\Development\Projects\ModernCPPStudy\ConsoleApplication\Container;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>fmt-5.3.0\include;D:\Development\Projects\ModernCPPStudy\ConsoleApplication\Container;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/module:search "../Container" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
