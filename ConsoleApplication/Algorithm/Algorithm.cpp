@@ -13,7 +13,7 @@ const int SEEK_SET = 0;
 
 int main()
 {
-	//Array<char> CharArray = { 'a', 'b', 'c', 'd', 'e' };
+	//Array<char> CharArray = { 'a', 'b', 'c', 'd', 'e' }; 
 
 	//for (auto Element : CharArray)
 	//{
