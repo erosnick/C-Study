@@ -62,7 +62,7 @@ namespace Container
 		}
 
 		// Ö§³ÖC++11µÄuniform initialization¡£
-		Array(std::initializer_list<T> InitializerList)
+		Array(const std::initializer_list<T>& InitializerList)
 		{
 			ElementCount = InitializerList.size();
 
@@ -70,9 +70,9 @@ namespace Container
 
 			int i = 0;
 
-			for (auto& Element : InitializerList)
+			for (auto& ListItem : InitializerList)
 			{
-				ArrayPtr[i] = Element;
+				ArrayPtr[i] = ListItem;
 
 				i++;
 			}

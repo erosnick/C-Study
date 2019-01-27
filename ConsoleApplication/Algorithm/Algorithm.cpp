@@ -1,6 +1,7 @@
 ﻿// Algorithm.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 import Array;
+import Array2D;
 import Bitvector;
 import Entity;
 
@@ -11,9 +12,44 @@ const int SEEK_CUR = 1;
 const int SEEK_END = 2;
 const int SEEK_SET = 0;
 
+template <typename T>
+struct foo {
+	int x[2];
+	std::unique_ptr<T []> ArrayPtr;
+
+	foo(const std::initializer_list<std::initializer_list<T>>& List)
+	{
+		ArrayPtr = decltype(ArrayPtr)(new T[3 * 3]);
+	}
+
+	template <typename... T>
+	foo(T... ts) : x{ ts... } { // note the use of brace-init-list
+	}
+
+	~foo()
+	{
+		printf("I'm dead.");
+	}
+};
+
+class Square
+{
+public:
+
+	Square(const std::initializer_list<int>& Parameter)
+	{
+
+	}
+
+private:
+
+	int Width;
+	int Height;
+};
+
 int main()
 {
-	//Array<char> CharArray = { 'a', 'b', 'c', 'd', 'e' }; 
+	//Array<char> CharArray = { 'a', 'b', 'c', 'd', 'e' };
 
 	//for (auto Element : CharArray)
 	//{
@@ -155,17 +191,9 @@ int main()
 
 	//	printf("******\n\n");
 
-	int TwoDimensionArray[3][3] = { {1, 2, 3},
-									{4, 5, 6},
-									{7, 8, 9} };
+	Square S = { 10, 20};
+	
+	Array2D<int> TwoDimensionArray = { {1, 2, 3}, {4, 5, 6} };
 
-	int ThreeDimensionArray[2][2][2] = { {{1, 2}, 
-										  {3, 4}},
-
-									     {{5, 6}, 
-										  {7, 8}}
-									   };
-
-	printf("%d\n", ThreeDimensionArray[1][1][0]);
-	printf("%d\n", ThreeDimensionArray[1][1][1]);
+	printf("%d\n", TwoDimensionArray[0][2]);
 }
