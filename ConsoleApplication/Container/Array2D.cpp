@@ -18,31 +18,32 @@ namespace Container
 		// 用于支持C++11的initializer_list特性的构造函数。
 		Array2D(const std::initializer_list<std::initializer_list<T>>& InitializerList)
 		{
-			DimensionX = InitializerList.size();
+			DimensionY = InitializerList.size();
 
-			DimensionY = 0;
+			DimensionX = 0;
 
-			if (DimensionX > 0)
+			if (DimensionY > 0)
 			{
-				DimensionY = InitializerList.begin()->size();
+				DimensionX = InitializerList.begin()->size();
 			}
 
 			ArrayPtr = decltype(ArrayPtr)(new T[DimensionX * DimensionY]);
 
-			size_t CounterWidth = 0;
 			
+			
+			size_t HeightCounter = 0;
 			for (auto& Row : InitializerList)
 			{
-				size_t CounterHeight = 0;
+				size_t WidthCounter = 0;
 
 				for (auto& Element : Row)
 				{
-					ArrayPtr[DimensionX * CounterHeight + CounterWidth] = Element;
+					ArrayPtr[DimensionX * HeightCounter + WidthCounter] = Element;
 
-					CounterHeight++;
+					WidthCounter++;
 				}
 
-				CounterWidth++;
+				HeightCounter++;
 			}
 		}
 
@@ -69,11 +70,15 @@ namespace Container
 
 		void Resize(int InDimensionX, int InDimensionY)
 		{
-			T* NewArrayPtr = decltype(ArrayPtr)(new T[InDimensionX * InDimensionY]);
+			size_t AllocateSize = InDimensionX * InDimensionY;
+
+			std::unique_ptr<T []> NewArrayPtr = decltype(ArrayPtr)(new T[AllocateSize]);
+
+			memset(NewArrayPtr.get(), 0, sizeof(T) * AllocateSize);
 
 			// 找出最小的行和列。
-			int MinWidth = DimensionX < InDimensionX ? DimensionX : InDimensionX;
-			int MinHeight = DimensionY < InDimensionY ? DimensionY : InDimensionY;
+			size_t MinWidth = DimensionX < InDimensionX ? DimensionX : InDimensionX;
+			size_t MinHeight = DimensionY < InDimensionY ? DimensionY : InDimensionY;
 
 			for (int y = 0; y < MinHeight; y++)
 			{
@@ -82,6 +87,14 @@ namespace Container
 					NewArrayPtr[y * MinHeight + x] = ArrayPtr[y * DimensionY + x];
 				}
 			}
+
+			if (ArrayPtr != nullptr)
+			{
+				ArrayPtr = std::unique_ptr<T []>(NewArrayPtr.release());
+			}
+
+			DimensionX = InDimensionX;
+			DimensionY = InDimensionY;
 		}
 
 		size_t Width() const
@@ -94,6 +107,11 @@ namespace Container
 			return DimensionY;
 		}
 
+		size_t Size() const
+		{
+			return DimensionX * DimensionY;
+		}
+
 		~Array2D()
 		{
 		}
@@ -103,21 +121,21 @@ namespace Container
 		{
 		public:
 
-			Array2DAccessor(Array2D<T>& InArray2D, int InColumn)
-				: InternalArrray2D(InArray2D), Column(InColumn)
+			Array2DAccessor(Array2D<T>& InArray2D, int InRow)
+				: InternalArrray2D(InArray2D), Row(InRow)
 			{
 
 			}
 
 			// 模拟Array2D[][]访问操作符。
-			T operator [] (int Row)
+			T operator [] (int Column)
 			{
 				return InternalArrray2D.ArrayPtr[Row * InternalArrray2D.DimensionX + Column];
 			}
 
 		private:
 
-			int Column;
+			int Row;
 			Array2D InternalArrray2D;
 		};
 

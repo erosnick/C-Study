@@ -2,6 +2,7 @@
 //
 import Array;
 import Array2D;
+import Array3D;
 import Bitvector;
 import Entity;
 
@@ -191,9 +192,14 @@ int main()
 
 	//	printf("******\n\n");
 
-	Square S = { 10, 20};
-	
 	Array2D<int> TwoDimensionArray = { {1, 2, 3}, {4, 5, 6} };
 
 	printf("%d\n", TwoDimensionArray[0][2]);
+
+	TwoDimensionArray.Resize(3, 3);
+
+	printf("%d\n", TwoDimensionArray[2][2]);
+
+	Array3D ThreeDimensionArray = { { {1, 2, 3}, {4, 5, 6} },
+									{ {7, 8, 9}, {10, 11, 12} } };
 }
