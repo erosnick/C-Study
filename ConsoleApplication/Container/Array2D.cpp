@@ -29,21 +29,20 @@ namespace Container
 
 			ArrayPtr = decltype(ArrayPtr)(new T[DimensionX * DimensionY]);
 
-			
-			
-			size_t HeightCounter = 0;
+			size_t RowCounter = 0;
+
 			for (auto& Row : InitializerList)
 			{
-				size_t WidthCounter = 0;
+				size_t ColumnCounter = 0;
 
 				for (auto& Element : Row)
 				{
-					ArrayPtr[DimensionX * HeightCounter + WidthCounter] = Element;
+					ArrayPtr[DimensionX * RowCounter + ColumnCounter] = Element;
 
-					WidthCounter++;
+					ColumnCounter++;
 				}
 
-				HeightCounter++;
+				RowCounter++;
 			}
 		}
 
@@ -84,14 +83,11 @@ namespace Container
 			{
 				for (int x = 0; x < MinWidth; x++)
 				{
-					NewArrayPtr[y * MinHeight + x] = ArrayPtr[y * DimensionY + x];
+					NewArrayPtr[y * InDimensionX + x] = ArrayPtr[y * DimensionX + x];
 				}
 			}
 
-			if (ArrayPtr != nullptr)
-			{
-				ArrayPtr = std::unique_ptr<T []>(NewArrayPtr.release());
-			}
+			ArrayPtr = std::unique_ptr<T []>(NewArrayPtr.release());
 
 			DimensionX = InDimensionX;
 			DimensionY = InDimensionY;
@@ -146,7 +142,7 @@ namespace Container
 
 	private:
 
-		std::unique_ptr<T []> ArrayPtr;
+		std::unique_ptr<T[]> ArrayPtr;
 		size_t DimensionX;
 		size_t DimensionY;
 	};
