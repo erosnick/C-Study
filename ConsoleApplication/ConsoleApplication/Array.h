@@ -28,7 +28,10 @@ public:
 
 	~Array()
 	{
-
+		if (ArrayPtr != nullptr)
+		{
+			delete[] ArrayPtr;
+		}
 	}
 
 private:

@@ -113,22 +113,32 @@ namespace Container
 		}
 
 		// 拷贝构造函数需要提供赋值操作符。
-		//Array3D& operator = (const Array3D& InArray3D)
-		//{
-		//	DimensionX = InArray3D.DimensionX;
-		//	DimensionY = InArray3D.DimensionY;
-		//	DimensionZ = InArray3D.DimensionZ;
+		Array3DExp& operator = (const Array3DExp& InArray3D)
+		{
+			DimensionX = InArray3D.DimensionX;
+			DimensionY = InArray3D.DimensionY;
+			DimensionZ = InArray3D.DimensionZ;
 
 
-		//	ArrayPtr = decltype(ArrayPtr)(new T[Size()]);
+			ArrayPtr = decltype(ArrayPtr)(new T**[DimensionZ]);
 
-		//	for (int i = 0; i < Size(); i++)
-		//	{
-		//		ArrayPtr[i] = InArray3D.ArrayPtr[i];
-		//	}
+			for (int z = 0; z < DimensionZ; z++)
+			{
+				ArrayPtr[z] = new int*[DimensionY];
 
-		//	return *this;
-		//}
+				for (int y = 0; y < DimensionY; y++)
+				{
+					ArrayPtr[z][y] = new int[DimensionX];
+
+					for (int x = 0; x < DimensionX; x++)
+					{
+						ArrayPtr[z][y][x] = InArray3D[z][y][x];
+					}
+				}
+			}
+
+			return *this;
+		}
 
 		T** operator [] (int Depth)
 		{

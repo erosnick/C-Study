@@ -3,6 +3,7 @@
 import Array;
 import Array2D;
 import Array3D;
+import Array3DExp;
 import Bitvector;
 import Entity;
 
@@ -16,7 +17,7 @@ const int SEEK_SET = 0;
 template <typename T>
 struct foo {
 	int x[2];
-	std::unique_ptr<T []> ArrayPtr;
+	std::unique_ptr<T[]> ArrayPtr;
 
 	foo(const std::initializer_list<std::initializer_list<T>>& List)
 	{
@@ -46,6 +47,24 @@ private:
 
 	int Width;
 	int Height;
+};
+
+class Object
+{
+public:
+	Object()
+	{
+		ArrayPtr = new int[10];
+	}
+
+	~Object() 
+	{
+		printf("I'm dead!\n");
+	};
+
+private:
+
+	int* ArrayPtr;
 };
 
 int main()
@@ -192,14 +211,57 @@ int main()
 
 	//	printf("******\n\n");
 
-	Array2D<int> TwoDimensionArray = { {1, 2, 3}, {4, 5, 6} };
+	//Array2D<int> TwoDimensionArray = { {1, 2, 3}, {4, 5, 6} };
 
-	printf("%d\n", TwoDimensionArray[0][2]);
+	//printf("%d\n", TwoDimensionArray[0][2]);
 
-	TwoDimensionArray.Resize(3, 3);
+	//TwoDimensionArray.Resize(3, 3);
 
-	printf("%d\n", TwoDimensionArray[2][2]);
+	//printf("%d\n", TwoDimensionArray[2][2]);
 
-	Array3D ThreeDimensionArray = { { {1, 2, 3}, {4, 5, 6} },
-									{ {7, 8, 9}, {10, 11, 12} } };
+	//Array3D ThreeDimensionArray = { { {1, 2, 3}, {4, 5, 6} },
+	//								{ {7, 8, 9}, {10, 11, 12} } };
+
+	//for (int z = 0; z < ThreeDimensionArray.Depth(); z++)
+	//{
+	//	for (int y = 0; y < ThreeDimensionArray.Height(); y++)
+	//	{
+	//		for (int x = 0; x < ThreeDimensionArray.Width(); x++)
+	//		{
+	//			printf("%d ", ThreeDimensionArray.Get(z, y, x));
+	//		}
+	//	}
+	//}
+
+	//std::unique_ptr<int*[]> IntPtr(new int*[10]);
+
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	IntPtr[i] = new int[10];
+	//}
+
+	//IntPtr[0][0] = 999;
+
+	//printf("%d", IntPtr[0][0]);
+
+	//Array3DExp<int> ThreeDimensionArrayExp = { { {1, 2, 3}, {4, 5, 6} },
+	//										   { {7, 8, 9}, {10, 11, 12} } };
+
+	//for (int z = 0; z < ThreeDimensionArrayExp.Depth(); z++)
+	//{
+	//	for (int y = 0; y < ThreeDimensionArrayExp.Height(); y++)
+	//	{
+	//		for (int x = 0; x < ThreeDimensionArrayExp.Width(); x++)
+	//		{
+	//			printf("%d ", ThreeDimensionArrayExp[z][y][x]);
+	//		}
+	//	}
+	//}
+
+	//std::unique_ptr<Object[], std::default_delete<Object[]>> ObjectArray(new Object[10]);
+
+	//std::unique_ptr<Object[], std::function<void(Object*)>> ObjectArray(new Object[10], [](Object* ObjectPtr)
+	//{
+	//	delete[] ObjectPtr;
+	//});
 }
