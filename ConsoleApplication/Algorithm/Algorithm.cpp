@@ -30,7 +30,7 @@ struct foo {
 
 	~foo()
 	{
-		printf("I'm dead.");
+		printf("I'm dead."); 
 	}
 };
 
