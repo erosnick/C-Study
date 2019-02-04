@@ -25,7 +25,7 @@ struct foo {
 	}
 
 	template <typename... T>
-	foo(T... ts) : x{ ts... } { // note the use of brace-init-list
+	foo(T... ts) : x{ ts... } {  // note the use of brace-init-list
 	}
 
 	~foo()
