@@ -14,7 +14,7 @@ const int SEEK_CUR = 1;
 const int SEEK_END = 2;
 const int SEEK_SET = 0;
 
-template <typename T>
+template <typename T> 
 struct foo {
 	int x[2];
 	std::unique_ptr<T[]> ArrayPtr;
