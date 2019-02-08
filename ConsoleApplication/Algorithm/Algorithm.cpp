@@ -244,19 +244,19 @@ int main()
 
 	//printf("%d", IntPtr[0][0]);
 
-	//Array3DExp<int> ThreeDimensionArrayExp = { { {1, 2, 3}, {4, 5, 6} },
-	//										   { {7, 8, 9}, {10, 11, 12} } };
+	Array3DExp<int> ThreeDimensionArrayExp = { { {1, 2, 3}, {4, 5, 6} },
+											   { {7, 8, 9}, {10, 11, 12} } };
 
-	//for (int z = 0; z < ThreeDimensionArrayExp.Depth(); z++)
-	//{
-	//	for (int y = 0; y < ThreeDimensionArrayExp.Height(); y++)
-	//	{
-	//		for (int x = 0; x < ThreeDimensionArrayExp.Width(); x++)
-	//		{
-	//			printf("%d ", ThreeDimensionArrayExp[z][y][x]);
-	//		}
-	//	}
-	//}
+	for (int z = 0; z < ThreeDimensionArrayExp.Depth(); z++)
+	{
+		for (int y = 0; y < ThreeDimensionArrayExp.Height(); y++)
+		{
+			for (int x = 0; x < ThreeDimensionArrayExp.Width(); x++)
+			{
+				printf("%d\n", ThreeDimensionArrayExp[z][y][x]);
+			}
+		}
+	}
 
 	//std::unique_ptr<Object[], std::default_delete<Object[]>> ObjectArray(new Object[10]);
 
