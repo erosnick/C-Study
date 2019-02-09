@@ -26,7 +26,6 @@ public:
 	}
 
 protected:
-
 	FlyBehavior* flyBehavior;
 	QuackBehavior* quackBehavior;
 };

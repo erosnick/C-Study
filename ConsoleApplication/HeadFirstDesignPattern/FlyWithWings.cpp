@@ -9,7 +9,7 @@ namespace Behavior
 
 		virtual void fly() override
 		{
-			printf("Fly with wings.");
+			printf("Fly with wings.\n");
 		}
 	};
 }

@@ -9,7 +9,7 @@ namespace Behavior
 
 		virtual void quack() override
 		{
-			printf("Quack.");
+			printf("Quack.\n");
 		}
 	};
 }
