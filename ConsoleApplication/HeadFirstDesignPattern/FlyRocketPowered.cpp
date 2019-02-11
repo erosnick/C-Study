@@ -1,15 +1,17 @@
 import std.core;
 import FlyBehavior;
 
+using namespace Behavior;
+
 namespace Behavior
 {
-	class FlyNoWay : public FlyBehavior
+	class FlyRocketPowered : public FlyBehavior
 	{
 	public:
 
 		virtual void fly() override
 		{
-			printf("Fly no way.\n");
+			printf("I'm flying with a rocket!\n");
 		}
 	};
 }

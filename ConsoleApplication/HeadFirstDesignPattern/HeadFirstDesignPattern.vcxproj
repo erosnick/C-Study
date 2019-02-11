@@ -120,25 +120,63 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArrowAndBowBehavior.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name ArrowAndBowBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="AxeBehavior.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name AxeBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Character /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="Duck.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Duck /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="FlyBehavior.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name FlyBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="FlyNoWay.cpp" />
+    <ClCompile Include="FlyNoWay.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name FlyNoWay /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="FlyRocketPowered.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name FlyRocketPowered /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="FlyWithWings.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name FlyWithWings /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="King.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name King /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="KnifeBehavior.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name KnifeBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Knight.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Knight /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MallardDuck.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name MallardDuck /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="ModelDuck.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name ModelDuck /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="Quack.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Quack /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="QuackBehavior.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name QuackBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Queen.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Queen /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="SwordBehavior.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name SwordBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Troll.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Troll /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="WeaponBehavior.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name WeaponBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

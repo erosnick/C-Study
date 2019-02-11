@@ -12,7 +12,7 @@ public:
 
 	virtual void swin() 
 	{ 
-		printf("All ducks float, even decoys."); 
+		printf("All ducks float, even decoys.\n"); 
 	}
 
 	void performFly()
@@ -23,6 +23,16 @@ public:
 	void performQuack()
 	{
 		quackBehavior->quack();
+	}
+
+	void setFlyBehavior(FlyBehavior* newFlyBehavior)
+	{
+		flyBehavior = newFlyBehavior;
+	}
+
+	void setQuackBehaivor(QuackBehavior* newQuackBehavior)
+	{
+		quackBehavior = newQuackBehavior;
 	}
 
 protected:
