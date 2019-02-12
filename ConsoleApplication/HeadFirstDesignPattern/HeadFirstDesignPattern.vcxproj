@@ -153,12 +153,18 @@
     <ClCompile Include="Knight.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Knight /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="Observer.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Observer /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MallardDuck.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name MallardDuck /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="ModelDuck.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name ModelDuck /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Subject.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Subject /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="Quack.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Quack /module:export %(AdditionalOptions)</AdditionalOptions>

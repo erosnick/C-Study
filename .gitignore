@@ -37,3 +37,6 @@
 *.exe
 *.out
 *.app
+/ConsoleApplication/.vs/ConsoleApplication/v15/Browse.VC.opendb
+/ConsoleApplication/.vs/ConsoleApplication/v15/Solution.VC.db-shm
+/ConsoleApplication/.vs/ConsoleApplication/v15/Solution.VC.db-wal
