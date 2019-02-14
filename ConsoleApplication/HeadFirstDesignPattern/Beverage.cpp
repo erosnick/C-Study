@@ -30,5 +30,5 @@ public:
 
 protected:
 	CupSize size;
-	std::string description = "Unknow Beverage.";
+	std::string description = "Unknow Beverage."; 
 };
