@@ -24,6 +24,11 @@ public:
 		{
 			printf("OnMessageYY()\n");
 		}
+
+		virtual void update(float temp, float humidity, float pressure) override
+		{
+
+		}
 	private:
 
 		Observer* instance;

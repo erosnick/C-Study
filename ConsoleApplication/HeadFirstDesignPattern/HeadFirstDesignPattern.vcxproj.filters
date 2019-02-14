@@ -81,5 +81,38 @@
     <ClCompile Include="Observer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="WeatherData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Beverage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CondimentDecorator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Expresso.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseBlend.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DarkRoast.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Decaf.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mocha.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Soy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Whip.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Milk.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -126,11 +126,24 @@
     <ClCompile Include="AxeBehavior.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name AxeBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="Beverage.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Beverage /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="Character.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Character /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="CondimentDecorator.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name CondimentDecorator /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="DarkRoast.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name DarkRoast /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Decaf.cpp" />
     <ClCompile Include="Duck.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Duck /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Expresso.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Expresso /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="FlyBehavior.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name FlyBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
@@ -144,6 +157,9 @@
     <ClCompile Include="FlyWithWings.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name FlyWithWings /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="HouseBlend.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name HouseBlend /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="King.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name King /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -152,6 +168,12 @@
     </ClCompile>
     <ClCompile Include="Knight.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Knight /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Milk.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Milk /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Mocha.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Mocha /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="Observer.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Observer /module:export %(AdditionalOptions)</AdditionalOptions>
@@ -183,6 +205,15 @@
     </ClCompile>
     <ClCompile Include="WeaponBehavior.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name WeaponBehavior /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="WeatherData.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name WeatherData /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Soy.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Soy /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Whip.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Whip /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -10,24 +10,27 @@ public:
 
 		virtual void OnMessageXX(int param1, float param2) = 0;
 		virtual void OnMessageYY(int param1, const std::string& param2) = 0;
+		virtual void update(float temp, float humidity, float pressure) = 0;
 	};
 
 	void registerListener(ObserverBase* listener)
 	{
-		listenerList.push_back(listener);
+		observerList.push_back(listener);
 	}
 
 	void removeListener(ObserverBase* listener)
 	{
-		auto iterator = std::find(listenerList.begin(), listenerList.end(), listener);
+		auto iterator = std::find(observerList.begin(), observerList.end(), listener);
 
-		if (iterator != listenerList.end())
+		if (iterator != observerList.end())
 		{
-			listenerList.erase(iterator);
+			observerList.erase(iterator);
 		}
 	}
 
-private:
+	virtual void notifyObservers() = 0;
 
-	std::list<ObserverBase*> listenerList;
+protected:
+
+	std::list<ObserverBase*> observerList;
 };
