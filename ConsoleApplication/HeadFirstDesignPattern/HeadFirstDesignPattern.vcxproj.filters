@@ -13,106 +13,136 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="源文件\Observer">
+      <UniqueIdentifier>{0b94dd55-4f89-4e42-ae78-313c5f846b00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Decorator">
+      <UniqueIdentifier>{3ef9065b-a1ae-43ce-b8ae-3ac6489b4e11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Factory">
+      <UniqueIdentifier>{b51a110d-2d7f-4e32-9780-e0ee5123f2d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Strategy">
+      <UniqueIdentifier>{f058a76f-b0ba-4508-8323-6bc537f67295}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Duck.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FlyBehavior.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="QuackBehavior.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FlyWithWings.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FlyNoWay.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MallardDuck.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Quack.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelDuck.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FlyRocketPowered.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponBehavior.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="King.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Queen.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Knight.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Troll.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="KnifeBehavior.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="SwordBehavior.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="AxeBehavior.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ArrowAndBowBehavior.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Subject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Observer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="WeatherData.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Beverage.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Decorator</Filter>
     </ClCompile>
     <ClCompile Include="CondimentDecorator.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Expresso.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="HouseBlend.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Decorator</Filter>
     </ClCompile>
     <ClCompile Include="DarkRoast.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Decorator</Filter>
     </ClCompile>
     <ClCompile Include="Decaf.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Decorator</Filter>
     </ClCompile>
-    <ClCompile Include="Mocha.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="Expresso.cpp">
+      <Filter>源文件\Decorator</Filter>
     </ClCompile>
-    <ClCompile Include="Soy.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Whip.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="HouseBlend.cpp">
+      <Filter>源文件\Decorator</Filter>
     </ClCompile>
     <ClCompile Include="Milk.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Decorator</Filter>
+    </ClCompile>
+    <ClCompile Include="Mocha.cpp">
+      <Filter>源文件\Decorator</Filter>
+    </ClCompile>
+    <ClCompile Include="Soy.cpp">
+      <Filter>源文件\Decorator</Filter>
+    </ClCompile>
+    <ClCompile Include="Whip.cpp">
+      <Filter>源文件\Decorator</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrowAndBowBehavior.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeBehavior.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="Duck.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyBehavior.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyNoWay.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyRocketPowered.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyWithWings.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="King.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="KnifeBehavior.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="Knight.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="MallardDuck.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelDuck.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="Quack.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="QuackBehavior.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="Queen.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="SwordBehavior.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="Troll.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponBehavior.cpp">
+      <Filter>源文件\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer.cpp">
+      <Filter>源文件\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="Subject.cpp">
+      <Filter>源文件\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="WeatherData.cpp">
+      <Filter>源文件\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="Pizza.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="SimplePizzaFactory.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="CheesePizza.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="ClamPizza.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="PepperoniPizza.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="VeggiePizza.cpp">
+      <Filter>源文件\Factory</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
