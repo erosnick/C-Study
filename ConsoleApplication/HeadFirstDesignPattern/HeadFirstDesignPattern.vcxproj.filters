@@ -144,5 +144,65 @@
     <ClCompile Include="VeggiePizza.cpp">
       <Filter>源文件\Factory</Filter>
     </ClCompile>
+    <ClCompile Include="PizzaStore.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="NYPizzaStore.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="ChicagoStyleCheesePizza.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="PizzaIngredientFactory.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Dough.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Sauch.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Cheese.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Veggies.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Pepperoni.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Clams.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="NYPizzaIngredientFactory.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="ThinCrustDough.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="MarinaraSauce.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="ReggianoCheese.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Garlic.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Onion.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Mushroom.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="RedPepper.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="FreshClams.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="SlicedPepperoni.cpp">
+      <Filter>源文件\Factory</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
