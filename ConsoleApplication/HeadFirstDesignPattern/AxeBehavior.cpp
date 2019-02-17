@@ -9,7 +9,7 @@ namespace Weapon
 	{
 	public:
 
-		virtual void useWeapon() override
+		virtual void useWeapon() override 
 		{
 			printf("Use Axe.\n");
 		}
