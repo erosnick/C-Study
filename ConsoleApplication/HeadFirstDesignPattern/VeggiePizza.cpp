@@ -6,6 +6,11 @@ class VeggiePizza : public Pizza
 {
 public:
 
+	VeggiePizza()
+	{
+
+	}
+
 	VeggiePizza(PizzaIngredientFactory* newPizzaIngredientFactory)
 		: pizzaIngredientFactory(newPizzaIngredientFactory)
 	{

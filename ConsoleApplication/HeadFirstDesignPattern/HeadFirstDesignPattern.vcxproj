@@ -138,14 +138,14 @@
     <ClCompile Include="CheesePizza.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name CheesePizza /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="ChicagoStyleCheesePizza.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name ChicagoStyleCheesePizza /module:export %(AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
     <ClCompile Include="ClamPizza.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name ClamPizza /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="Clams.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Clams /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Command /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="CondimentDecorator.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name CondimentDecorator /module:export %(AdditionalOptions)</AdditionalOptions>
@@ -192,6 +192,12 @@
     </ClCompile>
     <ClCompile Include="Knight.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Knight /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Light /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="LightOnCommand.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name LightOnCommand /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="MarinaraSauce.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name MarinaraSauce /module:export %(AdditionalOptions)</AdditionalOptions>
@@ -250,6 +256,12 @@
     </ClCompile>
     <ClCompile Include="SimplePizzaFactory.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name SimplePizzaFactory /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="SimpleRemoteControl.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name SimpleRemoteControl /module:export %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name Singleton /module:export %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="SlicedPepperoni.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/module:name SlicedPepperoni /module:export %(AdditionalOptions)</AdditionalOptions>

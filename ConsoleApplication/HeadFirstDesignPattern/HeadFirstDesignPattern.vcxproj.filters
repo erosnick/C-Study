@@ -25,6 +25,12 @@
     <Filter Include="源文件\Strategy">
       <UniqueIdentifier>{f058a76f-b0ba-4508-8323-6bc537f67295}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Singleton">
+      <UniqueIdentifier>{7b1aee48-58d2-4d25-9f0c-436645c0b7b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Command">
+      <UniqueIdentifier>{c563f472-63c7-4c80-ad21-fdcb7c721da3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -150,9 +156,6 @@
     <ClCompile Include="NYPizzaStore.cpp">
       <Filter>源文件\Factory</Filter>
     </ClCompile>
-    <ClCompile Include="ChicagoStyleCheesePizza.cpp">
-      <Filter>源文件\Factory</Filter>
-    </ClCompile>
     <ClCompile Include="PizzaIngredientFactory.cpp">
       <Filter>源文件\Factory</Filter>
     </ClCompile>
@@ -203,6 +206,21 @@
     </ClCompile>
     <ClCompile Include="SlicedPepperoni.cpp">
       <Filter>源文件\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>源文件\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="LightOnCommand.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>源文件\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleRemoteControl.cpp">
+      <Filter>源文件\Command</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
