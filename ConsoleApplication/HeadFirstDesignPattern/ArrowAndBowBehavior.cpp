@@ -3,7 +3,7 @@ import WeaponBehavior;
 
 using namespace Weapon;
 
-namespace Weapon
+namespace Weapon 
 {
 	class ArrowAndBowBehavior : public WeaponBehavior
 	{
