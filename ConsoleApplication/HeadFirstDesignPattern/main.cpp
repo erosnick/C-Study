@@ -25,6 +25,16 @@ import Whip;
 
 import SimpleRemoteControl;
 import LightOnCommand;
+import LightOffCommand;
+import GarageDoorOpenCommand;
+import GarageDoorCloseCommand;
+import RemoteControl;
+import CeilingFan;
+import CeilingFanHighCommand;
+import CeilingFanMediumCommand;
+import CeilingFanLowCommand;
+import CeilingFanOffCommand;
+import MacroCommand;
 
 int main()
 {
@@ -70,13 +80,54 @@ int main()
 
 	//printf("%s%3.2f\n", (houseBlend->getDescription() + " $").c_str(), houseBlend->cost());
 
-	SimpleRemoteControl* remote = new SimpleRemoteControl();
+	RemoteControl* remote = new RemoteControl();
 
 	Light* light = new Light();
 	LightOnCommand* lightOn = new LightOnCommand(light);
+	LightOffCommand* lightOff = new LightOffCommand(light);
 
-	remote->setCommand(lightOn);
-	remote->buttonWasPressed();
+	remote->setCommand(0, lightOn, lightOff);
+	remote->onButtonWasPushed(0);
+
+	GarageDoor* garageDoor = new GarageDoor();
+	GarageDoorOpenCommand* garageDoorOpen = new GarageDoorOpenCommand(garageDoor);
+	GarageDoorCloseCommand* garageDoorClose = new GarageDoorCloseCommand(garageDoor);
+
+	remote->setCommand(1, garageDoorOpen, garageDoorClose);
+	remote->onButtonWasPushed(1);
+	remote->undoButtonWasPushed();
+
+	CeilingFan* ceilingFan = new CeilingFan("Living Room");
+
+	CeilingFanMediumCommand* ceilingFanMedium = new CeilingFanMediumCommand(ceilingFan);
+	CeilingFanHighCommand* ceilingFanHigh = new CeilingFanHighCommand(ceilingFan);
+	CeilingFanLowCommand* ceilingFanLow = new CeilingFanLowCommand(ceilingFan);
+	CeilingFanOffCommand* ceilingFanOff = new CeilingFanOffCommand(ceilingFan);
+
+	remote->setCommand(2, ceilingFanHigh, ceilingFanOff);
+	remote->setCommand(3, ceilingFanMedium, ceilingFanOff);
+	remote->setCommand(4, ceilingFanLow, ceilingFanOff);
+
+	remote->onButtonWasPushed(2);
+	remote->offButtonWasPushed(2);
+	remote->undoButtonWasPushed();
+
+	remote->onButtonWasPushed(3);
+	remote->onButtonWasPushed(2);
+	remote->undoButtonWasPushed();
+	remote->offButtonWasPushed(3);
+
+	printf("MacroCommand test.\n");
+
+	std::vector<Command*> onCommands = { lightOn, garageDoorOpen, ceilingFanHigh };
+	std::vector<Command*> offCommands = { lightOff, garageDoorClose, ceilingFanOff };
+
+	Command* macroCommandOn = new MacroCommand(onCommands);
+	Command* macroCommandOff = new MacroCommand(offCommands);
+
+	remote->setCommand(5, macroCommandOn, macroCommandOff);
+	remote->onButtonWasPushed(5);
+	remote->undoButtonWasPushed();
 
 	return 0;
 }

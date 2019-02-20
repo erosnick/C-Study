@@ -1,25 +1,25 @@
 import Command;
 import Light;
 
-class LightOnCommand : public Command
+class LightOffCommand : public Command
 {
 public:
 
-	LightOnCommand(Light* newLight)
+	LightOffCommand(Light* newLight)
 		: light(newLight)
 	{
+
 	}
 
 	void execute() override
 	{
-		light->on();
+		light->off();
 	}
 
 	void undo() override
 	{
-		light->off();
+		light->on();
 	}
-
 private:
 
 	Light* light;
